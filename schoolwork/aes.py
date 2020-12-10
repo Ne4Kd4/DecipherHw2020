@@ -14,6 +14,8 @@ def random_key_generator(key_length, key_name):
     key : string
         Key in hexadecimal as string
     """
+    # allows insertion of custom key followed by padded a's
+    # it's unclear if this math actually works, but it does the trick for the test case I have
     if(len(key_name) * 8 <= key_length and key_name != ""):
         while(len(key_name) * 8 != key_length):
             key_name = key_name + "a"
@@ -113,6 +115,7 @@ class AES:
 
         self.key_expansion(self.key)
 
+    # you should work on your typing speed.
     def text2matrix(self, text, len=16):
         """
         Transforms a 128/192/256 bit block written in plain text form to the State form.
@@ -310,6 +313,7 @@ class AES:
 
         w[0], w[1], w[2], w[3] = w[1], w[2], w[3], w[0]
 
+    # orgbe
     def key_expansion(self, key):
         """
         Takes the Cipher Key and performs a Key Expansion.
@@ -632,6 +636,7 @@ class CBC:
 
         FileTools.write_file(decrypted_file_name, decrypted_array)
 
+# Happy New Year!
 class CTR:
     """
     A class used to encapsulate every method and
