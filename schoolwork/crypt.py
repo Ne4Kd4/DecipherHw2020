@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import click
 import aes
+import os
 
 @click.command()
 @click.option(
@@ -35,6 +36,8 @@ import aes
     type=click.Choice(["128", "192", "256"]),
     default="128",
 )
+
+# This is due soon...school sucks
 def main(encrypt, input_file, output_file, block_cipher_mode, key_name, key_length):
 
     if encrypt:
@@ -63,9 +66,12 @@ def main(encrypt, input_file, output_file, block_cipher_mode, key_name, key_leng
             bcm = aes.CTR(AES)
 
         bcm.cipher(input_file, output_file)
-        print(key)
         write_key(key)
+        os.remove(input_file)
 
+    # I legitimately don't know why, but every time I decode something
+    # I get a bunch of random NULL characters before the last word???
+    # I'll come back around to fixing this
     else:
         key = read_key()
         if key == 1:
@@ -84,6 +90,7 @@ def main(encrypt, input_file, output_file, block_cipher_mode, key_name, key_leng
             AES = aes.AES(key, 256)
 
         else:
+            # Merry Christmas!
             print("Key length not valid!")
             exit(1)
 
@@ -98,14 +105,18 @@ def main(encrypt, input_file, output_file, block_cipher_mode, key_name, key_leng
 
         bcm.decipher(input_file, output_file)
 
+# sometimes there’s a double cipher; sometimes, you cipher twice.
 def read_key():
+    fileName = "key.txt"
     try:
-        f = open("key.txt", "r")
+        f = open(fileName, "r")
     except IOError:
         return 1
     
     key = f.read()
     f.close()
+    os.remove(fileName)
+    # did you like the ascii?
     return key
 
 def write_key(key):
