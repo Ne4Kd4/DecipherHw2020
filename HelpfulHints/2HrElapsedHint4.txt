@@ -1,0 +1,3 @@
+The different combinations of names + dictionary words make it hard to attack the aes encryption algorithm...but I doubt reverse engineering would help either. Maybe I added some helpful hints in my own comments?
+
+Oh! If you're helping and reading this btw, make a small readme change so that I know you're stuck! Maybe I have new information for you.
