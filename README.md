@@ -12,3 +12,5 @@ to crack the code and decipher that text without that key!!!
 
 To help a bit...the one thing I do remember from creating the key the other day was that the password I put in were 2 words, no spaces...I just don't remember which 2. 
 The end text contains the word "sound" in it I think. Oh! and do check out the hints folder I'll be creating...they might be useful.
+
+Good luck!
